@@ -37,7 +37,7 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
             $batchMessage->addTag($tag->getName());
             $customers = $tag->getCustomers()->toArray();
             foreach ($customers as $customer){
-                $name = (!$customer->getName() or $customer->getName == '')? $customer->getEmail: $customer->getName();
+                $name = (!$customer->getName() or $customer->getName() == '')? $customer->getEmail(): $customer->getName();
                 $batchMessage->addToRecipient($customer->getEmail(), ['full_name' => $customer->getName()]);
             }
         }
