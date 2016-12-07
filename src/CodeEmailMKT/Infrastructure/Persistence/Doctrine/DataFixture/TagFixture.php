@@ -32,7 +32,7 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 
     public function addCustomers(Tag $tag)
     {
-        $indexesCustomers = array_rand(rand(0,4), rand(2,5));
+        $indexesCustomers = array_rand(range(0,1), 2);
         foreach ($indexesCustomers as $value){
             $customer = $this->getReference("customer-$value");
             $tag->getCustomers()->add($customer);
@@ -41,7 +41,7 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 
     public function addCampaigns(Tag $tag)
     {
-        $indexesCampaigns = array_rand(rand(0,19), rand(2,5));
+        $indexesCampaigns = array_rand(range(0,19), rand(2,5));
         foreach ($indexesCampaigns as $value){
             $campaign = $this->getReference("campaign-$value");
             if($campaign->getTags()->count() < 2) {
